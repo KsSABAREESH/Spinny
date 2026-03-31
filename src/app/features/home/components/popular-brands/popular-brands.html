@@ -1,0 +1,55 @@
+<div class="w-full py-20 flex justify-center">
+  <div class="w-[85%] text-center">
+    <!-- TITLE -->
+    <!-- TITLE WITH FADE LINES -->
+    <div class="flex items-center justify-center gap-4 mb-12">
+      <!-- LEFT LINE (fades toward center) -->
+      <div class="flex-1 h-[1px] bg-gradient-to-l from-gray-300 to-transparent"></div>
+      
+      <!-- TEXT -->
+      <h2 class="text-2xl font-semibold text-[rgb(46,5,78)] whitespace-nowrap">
+          Explore Popular Brands
+        </h2>
+        
+        <!-- RIGHT LINE (fades toward center) -->
+        <div class="flex-1 h-[1px] bg-gradient-to-r from-gray-300 to-transparent"></div>
+    </div>
+    <!-- GRID WRAPPER -->
+    <div class="relative p-6">
+      <!-- FADE BACKGROUND ONLY BEHIND GRID -->
+      <div
+        class="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(237,231,246,0.9),_transparent_75%)]"
+      ></div>
+
+      <!-- GRID -->
+      <div class="relative grid grid-cols-6 gap-4">
+        <div
+          *ngFor="let brand of brands"
+          class="bg-white rounded-3xl px-4 py-4 flex flex-col items-center justify-center shadow-sm hover:shadow-md transition cursor-pointer"
+        >
+          <!-- LOGO (REDUCED SIZE) -->
+          <img [src]="brand.logo" class="h-7 object-contain mb-2" />
+
+          <!-- NAME -->
+          <p class="text-xs text-gray-600">
+            {{ brand.name }}
+          </p>
+
+          <!-- COUNT -->
+          <p *ngIf="brand.count" class="text-xs text-[rgb(99,0,163)] font-medium mt-1">
+            {{ brand.count }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BUTTON -->
+    <div class="mt-10">
+      <button
+        class="border border-[rgb(99,0,163)] text-[rgb(99,0,163)] px-8 py-3 rounded-xl text-sm font-medium hover:bg-purple-50 transition"
+      >
+        View all cars
+      </button>
+    </div>
+  </div>
+</div>

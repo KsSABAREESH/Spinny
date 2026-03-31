@@ -1,0 +1,52 @@
+<div class="w-full flex justify-center mt-20">
+  <div class="">
+    <!-- TITLE -->
+    <div class="flex items-center justify-center gap-4 mb-12">
+      <div class="flex-1 h-[1px] bg-gradient-to-l from-gray-300 to-transparent"></div>
+
+      <h2 class="text-2xl font-semibold text-[rgb(46,5,78)] whitespace-nowrap">Explore More</h2>
+
+      <div class="flex-1 h-[1px] bg-gradient-to-r from-gray-300 to-transparent"></div>
+    </div>
+
+    <!-- CARDS -->
+    <div class="flex justify-between gap-4">
+      <div
+        *ngFor="let item of exploreItems"
+        class="relative w-[402px] h-[390px] rounded-2xl overflow-hidden text-white flex flex-col items-center text-center"
+        style="background-color: rgb(46, 5, 78)"
+      >
+        <!-- BG IMAGE -->
+        <img
+          [src]="item.bg"
+          class="absolute inset-0 m-auto h-[60%] object-contain opacity-40"
+        />
+
+        <!-- CONTENT CENTER -->
+        <div class="relative z-10 flex flex-col pt-10">
+          <!-- ICON (INCREASED SIZE) -->
+          <img [src]="item.icon" class="h-10 mb-4" />
+
+          <!-- DESC -->
+          <p class="text-sm text-gray-300">
+            {{ item.desc }}
+          </p>
+        </div>
+
+        <!-- BUTTON -->
+        <div class="absolute bottom-0 w-full">
+          <button
+            class="w-full py-4 font-semibold text-white transition"
+            (mouseenter)="hoverIndex = item.title"
+            (mouseleave)="hoverIndex = ''"
+            [ngStyle]="{
+              backgroundColor: hoverIndex === item.title ? 'rgb(166,27,55)' : '#ED264F'
+            }"
+          >
+            {{ item.cta }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
