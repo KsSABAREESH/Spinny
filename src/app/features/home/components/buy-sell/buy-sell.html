@@ -1,0 +1,144 @@
+<div
+  class="w-full bg-gradient-to-b from-[#EDE7F6] via-[#F5F2FA] to-white py-16 flex justify-center"
+>
+  <!-- OUTER CONTAINER -->
+  <div class="relative w-[80%]">
+    <!-- FLOATING TAB -->
+    <div
+      class="absolute -top-6 left-1/2 -translate-x-1/2 bg-white rounded-lg shadow-lg p-1.5 flex z-10"
+    >
+      <!-- Buy -->
+      <button
+        (click)="activeTab = 'buy'"
+        class="px-8 py-2.5 text-sm font-medium rounded-lg transition"
+        [ngClass]="activeTab === 'buy' ? 'bg-[#6300a3] text-white shadow-sm' : 'text-purple-700'"
+      >
+        Buy car
+      </button>
+
+      <!-- Sell -->
+      <button
+        (click)="activeTab = 'sell'"
+        class="px-8 py-2.5 text-sm font-medium rounded-lg transition"
+        [ngClass]="activeTab === 'sell' ? 'bg-[#6300a3] text-white shadow-sm' : 'text-purple-700'"
+      >
+        Sell car
+      </button>
+    </div>
+
+    <!-- INNER CARD  -->
+    <div class="bg-white rounded-xl shadow-[0_50px_40px_rgba(0,0,0,0.06)] p-10 pt-14 min-h-[510px]">
+      <div class="overflow-hidden">
+        <div
+          class="flex transition-transform duration-500 ease-in-out"
+          [style.transform]="activeTab === 'buy' ? 'translateX(0%)' : 'translateX(-100%)'"
+        >
+          <!-- ================= BUY TAB ================= -->
+          <div class="w-full flex-shrink-0 text-center">
+            <h2 class="text-xl font-semibold text-[#2E054E] mb-8">Spinny benefits</h2>
+
+            <div class="grid grid-cols-4 gap-6 justify-items-center">
+              <div *ngFor="let item of buyImages" class="text-center">
+                <div class="w-[85%] max-w-[234px] aspect-[234/200]">
+                  <img [src]="item.img" class="w-full h-full object-cover rounded-xl mb-4" />
+                </div>
+
+                <h3 class="font-semibold text-[#2E054E] text-sm pt-4">
+                  {{ item.title }}
+                </h3>
+
+                <p class="text-xs text-purple-900 mt-2">
+                  {{ item.desc }}
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-16">
+              <button
+                class="bg-[#ED264F] text-white px-24 py-3 rounded-lg font-medium hover:bg-[#d91f45] transition"
+              >
+                Browse cars
+              </button>
+            </div>
+          </div>
+
+          <!-- ================= SELL TAB ================= -->
+          <div *ngIf="activeTab === 'sell'" class="w-full flex-shrink-0 grid grid-cols-[1fr_1.3fr] gap-10 items-stretch">
+            <!-- LEFT IMAGE -->
+            <div class="flex justify-end">
+              <div class="relative w-[85%] max-w-sm aspect-[390/435] rounded-xl overflow-hidden">
+                <img
+                  src="https://spn-sta.spinny.com/spinny-web/static-images/assets/images/pages/HomePage/components/BuyAndSellTab/assets/sell-car-desktopV3.png?q=85&w=306"
+                  class="w-full h-full object-cover"
+                />
+
+                <div
+                  class="absolute inset-0 flex flex-col items-center justify-center text-white text-center"
+                >
+                  <div
+                    class="w-10 h-10 bg-white/80 text-black rounded-full flex items-center justify-center mb-3"
+                  >
+                    ▶
+                  </div>
+                  <p class="text-md font-medium px-20">Sell your car for the best price</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT CONTENT -->
+            <div class="h-full flex flex-col justify-between">
+              <!-- TOP CONTENT -->
+              <div>
+                <h3 class="font-semibold text-[#2E054E] mb-4">
+                  Select your car brand to get started
+                </h3>
+
+                <div class="flex items-center gap-6 text-xs text-gray-600 mb-6">
+                  <div class="flex items-center gap-2">⚡ <span>Instant online quote</span></div>
+                  <div class="flex items-center gap-2">💻 <span>Free car evaluation</span></div>
+                  <div class="flex items-center gap-2">💰 <span>Same day payment</span></div>
+                </div>
+
+                <div class="relative grid grid-cols-5 gap-4 mb-8 p-4 rounded-xl overflow-hidden">
+                  <div
+                    class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,0,0,0.09),_transparent_70%)]"
+                  ></div>
+
+                  <div
+                    *ngFor="let brand of brands"
+                    class="relative bg-white rounded-lg py-3 flex flex-col items-center justify-center hover:shadow-sm transition"
+                  >
+                    <img [src]="brand.logo" class="h-6 object-contain mb-1" />
+                    <span class="text-[8px] text-gray-500">
+                      {{ brand.name }}
+                    </span>
+                  </div>
+
+                  <div
+                    class="relative bg-white rounded-lg py-3 flex items-center justify-center text-purple-700 font-medium text-xs"
+                  >
+                    MORE
+                  </div>
+                </div>
+              </div>
+
+              <!-- BOTTOM CTA -->
+              <div class="flex items-center justify-between">
+                <button
+                  class="bg-[#ED264F] text-white px-24 py-3 rounded-lg font-medium hover:bg-[#d91f45] transition"
+                >
+                  Get price
+                </button>
+
+                <img
+                  src="https://spn-sta.spinny.com/spinny-web/static-images/assets/images/pages/HomePage/components/BuyAndSellTab/assets/SpinnySellRight.svg?q=85&w=700&dpr=0.8"
+                  class="h-5"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
